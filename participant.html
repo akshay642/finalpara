@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2090 Parameter</title>
+	<style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #dcffc6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eeeeee;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #8d8d8d;
+    width: 400px;
+}
+
+label {
+    text-align: left;
+    margin: 10px 0;
+    font-weight: bold;
+    width: 100%;
+}
+
+input {
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #777777;
+}
+
+.click {
+    background-color: #04a204;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.click:hover {
+    background-color: #058605;
+}
+
+textarea {
+    padding: 15px;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #7a7979;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect for buttons */
+.click:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+	
+	</style>
+</head>
+<body>
+	<div class="content">
+        <center>
+        <form method="post" action="" name="product" id="product">
+            <h1>2090</h1>
+            <p style="font-size: 10px;">INNOVATE-2-SUSTAIN</p>
+            
+            <label for="naem">Team Name*</label>
+            <input class="fil" type="text" name="team name" placeholder="Enter Team Name" required>
+
+            <label for="naem">Parameter1*</label>
+            <input class="fil" type="text" name="parameter1" placeholder="Enter parameter1" required>
+
+            <label for="naem">parameter2*</label>
+            <input class="fil" type="text" name="Parameter2" placeholder="Enter parameter2" required>
+
+            <label for="naem">Parameter3</label>
+            <input class="fil" type="text" name="Parameter3" placeholder="Enter parameter3">
+
+            <button class="click" id="submitBtn">Submit &#10132;</button>
+        </form>
+        </center>
+      
+    </div>
+
+    <!-- Modal dialog for the thank you message -->
+    <div class="modal" id="thankYouModal">
+        <div class="modal-content">
+            <p style="font-weight: bold; color: green;">Thank you! Your form is submitted successfully.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwWCFl0val1s1P5-Z0fFdu0PD32epAbQHbDM5hRLofb1U298WKHS_04xGvccciTvZ7cmA/exec'
+        const form = document.forms['product'];
+        const submitBtn = document.getElementById('submitBtn');
+        const thankYouModal = document.getElementById('thankYouModal');
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                openModal(); // Show the modal dialog
+                form.reset(); // Optionally, reset the form fields
+            })
+            .catch(error => console.error('Error!', error.message));
+        });
+
+        function openModal() {
+            thankYouModal.style.display = 'block';
+        }
+
+        function closeModal() {
+            thankYouModal.style.display = 'none';
+        }
+      </script>
+      
+    <br>
+</body>
+</html>
