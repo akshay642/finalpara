@@ -9,47 +9,85 @@
     font-family: Arial, Helvetica, sans-serif;
         }
         /* Common styles for all screen sizes */
+/* Import custom fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+/* General Styles */
 body {
-    background-color: #dcffc6;
+    background-color: #ff6b6b;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
+/* Container for the Form */
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    animation: fadeIn 1s ease;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Form Styles */
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #eeeeee;
+    background-color: #fff; /* White background */
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid #8d8d8d;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     width: 400px;
+    transition: transform 0.5s ease;
 }
 
+form:hover {
+    transform: scale(1.05);
+}
+
+/* Form Labels */
 label {
     text-align: left;
     margin: 10px 0;
     font-weight: bold;
     width: 100%;
+    font-size: 16px;
+    color: #333;
 }
 
-input {
+/* Form Inputs */
+input,
+textarea {
     padding: 15px;
     width: 100%;
     margin-bottom: 20px;
     border-radius: 6px;
-    border: 1px solid #777777;
+    border: 1px solid #ccc; /* Lighter border color */
+    transition: border-color 0.3s ease;
+    font-size: 14px;
+    color: #444; /* Darker text color */
 }
 
+input:focus,
+textarea:focus {
+    border-color: #04a204;
+}
+
+/* Button Styles */
 .click {
     background-color: #04a204;
     color: #fff;
@@ -60,21 +98,14 @@ input {
     border-radius: 6px;
     width: 100%;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .click:hover {
     background-color: #058605;
 }
 
-textarea {
-    padding: 15px;
-    width: 100%;
-    height: 80px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    border: 1px solid #7a7979;
-}
-
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -83,6 +114,7 @@ textarea {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
 .modal-content {
@@ -95,7 +127,9 @@ textarea {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease;
 }
+
 
 /* Media Query for Tablets */
 @media (max-width: 768px) {
@@ -136,6 +170,7 @@ textarea {
         <form method="post" action="" name="product" id="product">
             <h1>2090</h1>
             <p style="font-size: 10px;">INNOVATE-2-SUSTAIN</p>
+            <p style="font-size: 10px;">Review 1</p>
             
             <label for="naem">Team Name*</label>
             <input class="fil" type="text" name="team name" placeholder="Enter Team Name" required>
